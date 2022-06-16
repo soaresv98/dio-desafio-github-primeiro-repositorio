@@ -1,0 +1,149 @@
+Comandos - Windows
+
+1 - dir
+
+listar e poder se situar dentro do sistema operacional e entender qual local a gente está.
+
+Traz uma lista de diretórios contidos na pasta na qual a gente está situado, ou seja, dentro de C:/users/Victor tem todas aquelas pastas.
+
+2 - cd
+
+Possibilita que a gente navegue entre as pastas.
+
+“cd /” usei um caminho específico, a base do diretório C.
+
+Após, se eu usar o comando dir, ele vai listar as pastas presentes na base do diretório C.
+
+“cd Windows” fui para a pasta Windows.
+
+3 - cd ..
+
+Volta a pasta que estava antes.
+
+4 - cls
+
+Limpar a tela
+
+5 - Tecla Tab
+
+Autocompleta.
+
+6 - mkdir
+
+Cria uma pasta.
+
+7 - Criar arquivo
+
+Comando “echo” que printa de volta no terminal uma frase ou texto que você escrever.
+
+“echo hello >” o símbolo > é um redirecionador de fluxo, ele vai pegar output, a saída dessa função echo e vai jogar em um arquivo.
+
+“echo hello > hello.txt”
+
+O sistema operacional via checar se na pasta workspace já existe um arquivo chamado hello.txt, caso não tenha ele vai criar pra gente.
+
+8 - Deletar ARQUIVOS dentro da pasta
+
+“del”
+
+“del workspace”
+
+9 - seta pra cima no teclado navega pelo histórico de comandos usados.
+
+10 - Remover repositório com todos os arquivos que estão dentro
+
+“rmdir workspace /S /Q”
+
+Blops, Trees e Commit
+
+Blops são arquivos e possuem sha1 (criptografia)
+
+As trees são como pastas e englobam os blops e até mesmo outras trees, também possuem sua própria sha1.
+
+Commit é a base de tudo. Contem as trees, parente (quem fez o último commit), autor (quem iniciou), mensagem (da significado às pastas), timestamp (a data que foi criado), e possuem também sha1.
+
+Comandos Git
+
+- git init: para iniciar o repositório do git
+- git add: mover arquivos
+- git commit: criar commit
+
+Criando um repositório
+
+Botão direito do mouse + git bash here → inicia o git na pasta que eu estou.
+
+ls para listar
+
+cd workspace/ para acessar a pasta workspace
+
+ctrl + l para limpar
+
+mkdir livro-receitas para criarmos a pasta livro-receitas dentro da pasta workspace
+
+ls para conferir se foi criada
+
+cd livro-receitas para entrarmos na pasta criada
+
+git init para o git iniciar e podermos versionar e gerenciar nosso código
+
+Será criado uma pasta gerencial do git contendo todo o código do git e onde ele versiona mas ela se se encontra oculta.
+
+ls -a para mostrar arquivos ocultos e vai mostrar que de fato tem uma pasta .git dentro da pasta livro-receitas.
+
+Vamos criar nosso primeiro arquivo dentro da pasta livro-receitas mas como é a primeira vez devemos configurá-lo antes.
+
+git config --global [user.email](http://user.email) “vscassaro@hotmail.com”
+
+git config --global [user.name](http://user.name) soaresv98
+
+Criando um commit
+
+git commit -m “commit inicial” → cria um repositório
+
+Repositório # diretório (pasta)
+
+git status → para sabermos qual status (untracked, unmodified, modified ou staged) está o arquivo
+
+mv Strogonoff (nome do arquivo) ./ receitas/ (nome da pasta para qual eu quero transferir o arquivo)
+
+Usando o comando git status percebemos que a pasta receitas e o arquivo strogonoff não estão staged e para isso devemos usar o comando git add [strogonoff.md](http://strogonoff.md) receitas/  
+
+para torná-los staged e passíveis de commit
+
+Depois só usar o comando 
+
+git commit -m “cria pasta receitas, move o arquivo para receitas” 
+
+entre aspas fica um resumo do que a gente fez.
+
+Quando criamos um arquivo diretamente no repositório e dermos git status ele irá aparecer como untracked. Para mover esse arquivo untracked para staged usar o comando git add * → ele pega tudo o que está no working directory e adiciona staged para podermos comitar.
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/225a354c-b707-4008-b456-bc6163fb0362/Untitled.png)
+
+Pegamos nosso diretório de trabalho, usamos o comando git add que moveu todos arquivos untracked ou unmodified para staged que vão compor nossa área de staging area. E quando a gente usou o comando git commit -m moveu toda essa área de stagin para o repositório local.
+
+**GitHub**
+
+Para empurrarmos a versão do nosso repositório local para um repositório remoto. Para isso, primeiro temos que adicionar a origem para estarmos enviando esses arquivos
+
+git remote add origin `[https://github.com/soaresv98/livro-receitas.git](https://github.com/soaresv98/livro-receitas.git)` (link gerado no github)
+
+git remove -v → ele vai listar a lista de repositórios remotos que eu tenho cadastrado
+
+Comando para levar nosso repositório local para o repositório remoto é: git push origin (apelido que demos ao link do github) master
+
+Resolvendo conflitos
+
+Puxar o que tem no repositório remoto para seu repositório local
+
+git pull origin master
+
+Fazer a análise manualmente das linhas que coincidem e fazer as alterações necessárias e depois empurrar a versão atualizada novamente para o repositório remoto.
+
+Como clonar um repositório
+
+1 - Copiar o url dele no github, na parte de code
+
+2 - Usar o comando 
+
+git clone link que você copiou
